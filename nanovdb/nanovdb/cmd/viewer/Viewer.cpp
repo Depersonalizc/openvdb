@@ -1398,7 +1398,7 @@ bool Viewer::drawMaterialParameters(SceneNode::Ptr node, MaterialClass mat)
         ImGui::BulletText("Transmittance Method");
         ImGui::NextColumn();
         ImGui::SetNextItemWidth(-1);
-        isChanged |= ImGui::Combo("##transmittancemethod-value", (int*)&params.transmittanceMethod, "ReimannSum\0DeltaTracking\0RatioTracking\0ResidualRatioTracking\0\0");
+        isChanged |= ImGui::Combo("##transmittancemethod-value", (int*)&params.transmittanceMethod, "ReimannSum\0DeltaTracking\0RatioTracking\0ResidualRatioTracking\0DDA\0HDDA\0");
         ImGui::NextColumn();
 
     } else if (mat == MaterialClass::kFogVolumeFast) {
@@ -1426,7 +1426,7 @@ bool Viewer::drawMaterialParameters(SceneNode::Ptr node, MaterialClass mat)
         ImGui::BulletText("Transmittance Method");
         ImGui::NextColumn();
         ImGui::SetNextItemWidth(-1);
-        isChanged |= ImGui::Combo("##transmittancemethod-value", (int*)&params.transmittanceMethod, "ReimannSum\0DeltaTracking\0RatioTracking\0ResidualRatioTracking\0\0");
+        isChanged |= ImGui::Combo("##transmittancemethod-value", (int*)&params.transmittanceMethod, "ReimannSum\0DeltaTracking\0RatioTracking\0ResidualRatioTracking\0DDA\0HDDA\0");
         ImGui::NextColumn();
     }
 

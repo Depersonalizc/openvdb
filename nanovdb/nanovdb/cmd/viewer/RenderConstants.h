@@ -14,7 +14,9 @@
 enum class VolumeTransmittanceMethod : int { kRiemannSum = 0,
                                              kDeltaTracking,
                                              kRatioTracking,
-                                             kResidualRatioTracking };
+                                             kResidualRatioTracking,
+                                             kDDA,
+                                             kHDDA};
 
 struct RendererAttributeParams
 {

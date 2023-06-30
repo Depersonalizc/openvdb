@@ -68,7 +68,7 @@ inline __hostdev__ float getTransmittanceRiemannSum(const RayT& ray, const Sampl
     return transmittance;
 }
 
-#if 0
+#if 1
 template<typename RayT, typename SamplerT>
 inline __hostdev__ float getTransmittanceDDA(const RayT& ray, const SamplerT& sampler, const HeterogenousMedium& medium, uint32_t& seed)
 {
@@ -208,12 +208,13 @@ inline __hostdev__ float getTransmittance(RayT& ray, const SamplerT& sampler, co
         return 1.0f;
 
     switch (medium.transmittanceMethod) {
+    case VolumeTransmittanceMethod::kHDDA: return getTransmittanceHDDA(ray, sampler, medium, seed);
+    case VolumeTransmittanceMethod::kDDA: return getTransmittanceDDA(ray, sampler, medium, seed);
+
     case VolumeTransmittanceMethod::kResidualRatioTracking: return getTransmittanceResidualRatioTracking(ray, sampler, medium, seed);
     case VolumeTransmittanceMethod::kRatioTracking: return getTransmittanceRatioTracking(ray, sampler, medium, seed);
     case VolumeTransmittanceMethod::kDeltaTracking: return getTransmittanceDeltaTracking(ray, sampler, medium, seed);
     case VolumeTransmittanceMethod::kRiemannSum: return getTransmittanceRiemannSum(ray, sampler, medium, seed);
-    //case VolumeTransmittanceMethod::kHDDA: return getTransmittanceHDDA(ray, sampler, medium, seed);
-    //case VolumeTransmittanceMethod::kDDA: return getTransmittanceDDA(ray, sampler, medium, seed);
     default: return 1.f;
     }
 }
